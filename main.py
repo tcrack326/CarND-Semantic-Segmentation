@@ -121,7 +121,7 @@ def train_nn(sess, epochs, batch_size, get_batches_fn, train_op, cross_entropy_l
                 learning_rate: 1e-4
             }
             _, loss = sess.run([train_op, cross_entropy_loss], feed_dict=feed_dict)
-            print('Epoch: %d, Batch: %d, Cost: %d' % (epoch, batch, loss) )
+            print('Epoch: %d, Batch: %d, Cost: %f' % (epoch+1, batch, loss) )
     pass
 tests.test_train_nn(train_nn)
 
