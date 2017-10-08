@@ -35,6 +35,7 @@ def load_vgg(sess, vgg_path):
 
     tf.saved_model.loader.load(sess, [vgg_tag], vgg_path)
     graph = tf.get_default_graph()
+
     image_input = graph.get_tensor_by_name(vgg_input_tensor_name)
     keep_prob = graph.get_tensor_by_name(vgg_keep_prob_tensor_name)
     layer3_out = graph.get_tensor_by_name(vgg_layer3_out_tensor_name)
@@ -112,9 +113,7 @@ def train_nn(sess, epochs, batch_size, get_batches_fn, train_op, cross_entropy_l
     # TODO: Implement function
 
     for epoch in range(epochs):
-        count = 0
         for batch, (image, label) in enumerate(get_batches_fn(batch_size)):
-            count += 1
             feed_dict = {
                 input_image: image,
                 correct_label: label,
@@ -122,7 +121,7 @@ def train_nn(sess, epochs, batch_size, get_batches_fn, train_op, cross_entropy_l
                 learning_rate: 1e-4
             }
             _, loss = sess.run([train_op, cross_entropy_loss], feed_dict=feed_dict)
-            print("Epoch:", '%04d | ' % (count+1), "cost =", "{:.9f}".format(loss))
+            print("Epoch: ", '%04d | ' % (batch+1), "cost =", "{:.9f}".format(loss))
         pass
 tests.test_train_nn(train_nn)
 
@@ -144,8 +143,6 @@ def run():
     # constants for training
     epochs = 10
     batch_size = 128
-    learning_rate = 1e-4
-    keep_prob = 0.5
 
     # placeholders
     correct_label = tf.placeholder(tf.float32, [None, image_shape[0], image_shape[1], num_classes])
