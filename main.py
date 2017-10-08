@@ -142,7 +142,7 @@ def run():
 
     # constants for training
     epochs = 10
-    batch_size = 128
+    batch_size = 1
 
     # placeholders
     correct_label = tf.placeholder(tf.float32, [None, image_shape[0], image_shape[1], num_classes])
