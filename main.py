@@ -141,7 +141,7 @@ def run():
     #  https://www.cityscapes-dataset.com/
 
     # constants for training
-    epochs = 5
+    epochs = 10
     batch_size = 1
 
     # placeholders
