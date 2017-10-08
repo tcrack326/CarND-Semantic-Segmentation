@@ -121,8 +121,8 @@ def train_nn(sess, epochs, batch_size, get_batches_fn, train_op, cross_entropy_l
                 learning_rate: 1e-4
             }
             _, loss = sess.run([train_op, cross_entropy_loss], feed_dict=feed_dict)
-            print("Epoch: ", '%04d | ' % (batch+1), "cost =", "{:.9f}".format(loss))
-        pass
+            print(f'EPOCH: {epoch:5} | BATCH: {batch:5} | LOSS: {loss:10.5}')
+            pass
 tests.test_train_nn(train_nn)
 
 
@@ -141,7 +141,7 @@ def run():
     #  https://www.cityscapes-dataset.com/
 
     # constants for training
-    epochs = 10
+    epochs = 5
     batch_size = 1
 
     # placeholders
