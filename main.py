@@ -111,10 +111,6 @@ def train_nn(sess, epochs, batch_size, get_batches_fn, train_op, cross_entropy_l
     """
     # TODO: Implement function
 
-    #constants for learning
-    learning_rate = 1e-4
-    keep_prob = 0.5
-
     for epoch in range(epochs):
         count = 0
         for batch, (image, label) in enumerate(get_batches_fn(batch_size)):
