@@ -148,7 +148,7 @@ def run():
     keep_prob = 0.5
 
     # placeholders
-    #correct_label = tf.placeholder(tf.float32, [None, image_shape[0], image_shape[1], num_classes])
+    correct_label = tf.placeholder(tf.float32, [None, image_shape[0], image_shape[1], num_classes])
     #learning_rate = tf.placeholder(tf.float32)
 
     with tf.Session() as sess:
